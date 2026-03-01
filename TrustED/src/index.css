@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 200 20% 92%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 200 20% 92%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 200 20% 92%;
+
+    --primary: 170 80% 50%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 200 20% 85%;
+
+    --muted: 220 15% 13%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 150 70% 45%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 220 20% 7%;
+
+    --success: 150 70% 45%;
+    --success-foreground: 220 20% 7%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 170 80% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 18% 8%;
+    --sidebar-foreground: 200 20% 85%;
+    --sidebar-primary: 170 80% 50%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 200 20% 85%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 170 80% 50%;
+
+    /* Custom cyber tokens */
+    --cyber-glow: 170 80% 50%;
+    --cyber-green: 150 70% 45%;
+    --cyber-blue: 200 80% 55%;
+    --cyber-purple: 260 70% 60%;
+    --cyber-red: 0 72% 55%;
+    --cyber-amber: 38 92% 55%;
+
+    --gradient-cyber: linear-gradient(135deg, hsl(170 80% 50%), hsl(150 70% 45%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 72% 55%), hsl(38 92% 55%));
+    --gradient-glass: linear-gradient(135deg, hsla(220, 15%, 18%, 0.6), hsla(220, 15%, 12%, 0.4));
+
+    --shadow-neon: 0 0 20px hsla(170, 80%, 50%, 0.3), 0 0 60px hsla(170, 80%, 50%, 0.1);
+    --shadow-card: 0 4px 24px hsla(0, 0%, 0%, 0.4);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+    box-shadow: var(--shadow-card);
+  }
+
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .text-gradient-cyber {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-cyber);
+  }
+
+  .border-glow {
+    @apply border border-primary/30;
+    box-shadow: inset 0 0 20px hsla(170, 80%, 50%, 0.05), 0 0 20px hsla(170, 80%, 50%, 0.1);
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-scan {
+    animation: scan 2s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(10px); }
+  }
+
+  .risk-meter-low { @apply text-accent; }
+  .risk-meter-medium { @apply text-warning; }
+  .risk-meter-high { @apply text-destructive; }
+  .risk-meter-critical { @apply text-destructive; }
+}
